@@ -3,18 +3,17 @@ use piston_window::types::Color;
 
 const BLOCK_SIZE: f64 = 25.0;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Block {
   pub x: f64,
   pub y: f64
 }
 
-
 impl Block {
-  pub fn new (x: f64, y: f64) -> Block {
+  pub fn new () -> Self {
     Block {
-      x,
-      y
+      x: 0.0,
+      y: 0.0
     }
   }
 
@@ -25,5 +24,10 @@ impl Block {
       con.transform,
       g
     );
+  }
+
+  pub fn update (&mut self, x: f64, y: f64) {
+    self.x = x;
+    self.y = y;
   }
 }
